@@ -29,15 +29,15 @@ temp2(:,2)=temp2(:,3)-temp2(:,4)+temp2(:,5)+temp2(:,6)*300; %CALCULATE POWER HER
 temp2=temp2(b,:);
 temp2(:,1)=1:length(teams);
 teams=teams(b);
-temp(1,:)={'Team','Rank','Score(Avg+3WkAvg-Std+300*%Wins)','Average Points','STD','Avereage score for in last 3 weeks','Percent of Total Wins'};
+temp(1,:)={'Team','Rank','Score()','Average Points','STD','Avereage score for in last 3 weeks','Total Win Loss'};
 temp(2:end,1)=teams;
 temp(2:end,2:end)=num2cell(temp2);
 clear PointsSTD; clear TotalWins; clear temp2; clear b;
-fid=fopen(strcat('Ranks-Week',int2str(weeks),'.csv'),'w');
+fid=fopen('test.csv','w');
 fprintf(fid,'%s,',temp{1,1:end-1});
 fprintf(fid,'%s\n',temp{1,end});
 for i=1:length(teams)
-    fprintf(fid,'%s, %2.1f, %2.1f, %2.1f, %2.1f, %d, %d\n',temp{i+1,:});
+    fprintf(fid,'%s, %d, %d, %d, %2.1f, %d, %d\n',temp{i+1,:});
 end
 fclose(fid);
-clear ans; clear i; clear j; clear fid; clear weeks;
+clear ans; clear i; clear j;
