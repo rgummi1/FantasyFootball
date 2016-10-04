@@ -1,13 +1,13 @@
-Team,Rank,Weighted Score(Avg+3WkAvg-Std+300*%Wins),Points per Game,STD,Avereage Points in last 3 weeks,Percent of Total Wins,Expected W-L(not used in score)(based on W-L if you played everyone every week),Managerial efficiency(not used in score)(How many points you scored out of your max. 100% mean no one on your bench scored more than a starter)
->Taniquetil Eagles, 1, 264.3, 123.6, 19.9, 119.5, 1.368821e-001, 3.3, 9.220585e-001
-Fae Cthae, 2, 249.7, 115.6, 16.2, 109.2, 1.368821e-001, 3.3, 9.320565e-001
-DeandreSSSS Hopkin, 3, 234.1, 117.0, 31.9, 115.9, 1.102662e-001, 2.6, 9.027590e-001
-Last Manning Standin, 4, 226.8, 108.5, 18.7, 103.9, 1.102662e-001, 2.6, 8.737923e-001
-Gotta Catch Jamaal!, 5, 225.7, 103.9, 8.3, 102.8, 9.125475e-002, 2.2, 8.343041e-001
->Team  Suckerpunch, 6, 212.0, 99.1, 12.7, 102.8, 7.604563e-002, 1.8, 8.811111e-001
-Flacco's  Favorite, 7, 211.0, 107.7, 39.0, 118.3, 7.984791e-002, 1.9, 8.602236e-001
-The Life of Julio, 8, 203.8, 102.5, 23.7, 99.8, 8.365019e-002, 2.0, 8.821252e-001
-G - Lit, 9, 190.7, 92.5, 16.0, 96.0, 6.083650e-002, 1.5, 8.507703e-001
-WINTER IS NEVER COMING, 10, 180.4, 93.9, 17.5, 86.9, 5.703422e-002, 1.4, 8.125947e-001
->Do You Even Lift?, 11, 159.1, 80.8, 8.0, 78.3, 2.661597e-002, 0.6, 8.085106e-001
->Fortune Favors The Bold, 12, 142.4, 84.4, 23.7, 72.6, 3.041825e-002, 0.7, 7.070157e-001
+Team,Rank,Weighted Score(Avg+3WkAvg-Std+300*%Wins),Points per Game,STD,Avereage Points in last 3 weeks,Percent of Total Wins(if you played everyone every week),Expected W-L(not used in score)(based on W-L if you played everyone every week),Managerial efficiency(not used in score)(How many points you scored out of your max. 100% mean no one on your bench scored more than a starter)
+>Taniquetil Eagles, 1, 264.3, 123.6, 19.9, 119.5, 0.137, 3.3, 0.922
+Fae Cthae, 2, 249.7, 115.6, 16.2, 109.2, 0.137, 3.3, 0.932
+DeandreSSSS Hopkin, 3, 234.1, 117.0, 31.9, 115.9, 0.110, 2.6, 0.903
+Last Manning Standin, 4, 226.8, 108.5, 18.7, 103.9, 0.110, 2.6, 0.874
+Gotta Catch Jamaal!, 5, 225.7, 103.9, 8.3, 102.8, 0.091, 2.2, 0.834
+>Team  Suckerpunch, 6, 212.0, 99.1, 12.7, 102.8, 0.076, 1.8, 0.881
+Flacco's  Favorite, 7, 211.0, 107.7, 39.0, 118.3, 0.080, 1.9, 0.860
+The Life of Julio, 8, 203.8, 102.5, 23.7, 99.8, 0.084, 2.0, 0.882
+G - Lit, 9, 190.7, 92.5, 16.0, 96.0, 0.061, 1.5, 0.851
+WINTER IS NEVER COMING, 10, 180.4, 93.9, 17.5, 86.9, 0.057, 1.4, 0.813
+>Do You Even Lift?, 11, 159.1, 80.8, 8.0, 78.3, 0.027, 0.6, 0.809
+>Fortune Favors The Bold, 12, 142.4, 84.4, 23.7, 72.6, 0.030, 0.7, 0.707
