@@ -1,15 +1,14 @@
 clear all; close all; clc
 
-temp=importdata('HopkinsFF_pointsTotals.csv');
+temp=importdata('HopkinsFF_pointsTotals20164.csv');
 data=temp.data;
 [~,weeks]=size(data);
 teams=temp.textdata(2:end,1);
-PointsSTD=zeros(length(teams),3);
+PointsSTD=zeros(length(teams),2);
 TotalWins=zeros(length(teams),weeks+1);
 for i=1:length(teams)
-    PointsSTD(i,1)=sum(data(i,:)); %totpoints
+    PointsSTD(i,1)=sum(data(i,:))/weeks; %totpoints
     PointsSTD(i,2)=std(data(i,:)); %std
-    PointsSTD(i,3)=PointsSTD(i,1)-PointsSTD(i,2)*2; %TOT-2*STD
 end
 
 for i=1:length(teams)
@@ -19,20 +18,18 @@ for i=1:length(teams)
     end
 end
 
-[~,temp]=sort(PointsSTD(:,3),'descend');
-teams(temp);
-
-temp=cell(length(teams)+1,8);
-temp2=zeros(length(teams),7);
-temp2(:,3:5)=PointsSTD;
-temp2(:,7)=TotalWins(:,1)/sum(TotalWins(:,1));
-temp2(:,6)=(sum(data(:,(end-2):end),2));
-temp2(:,2)=temp2(:,3)*.2981-temp2(:,4)*.09839+temp2(:,6)*.01297+temp2(:,7)*32.56; %CALCULATE POWER HERE
+temp=cell(length(teams)+1,7);
+temp2=zeros(length(teams),6);
+temp2(:,3:4)=PointsSTD;
+temp2(:,6)=TotalWins(:,1)/sum(TotalWins(:,1));
+%temp2(:,6)=sum(TotalWins(:,(end-2):end),2)/(66*3);
+temp2(:,5)=(sum(data(:,(end-2):end),2))/weeks;
+temp2(:,2)=temp2(:,3)-temp2(:,4)+temp2(:,5)+temp2(:,6)*300; %CALCULATE POWER HERE
 [~,b]=sort(temp2(:,2),'descend');
 temp2=temp2(b,:);
 temp2(:,1)=1:length(teams);
 teams=teams(b);
-temp(1,:)={'Team','Rank','Score(sum of last 3 columns)','Total Points','STD','Points-STD','Points for in last 3 weeks','Total Win Loss'};
+temp(1,:)={'Team','Rank','Score(sum of last 3 columns)','Total Points','STD','Points for in last 3 weeks','Total Win Loss'};
 temp(2:end,1)=teams;
 temp(2:end,2:end)=num2cell(temp2);
 

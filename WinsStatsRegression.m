@@ -1,7 +1,7 @@
 %wins to stats regression
 clear all; close all; clc
 
-temp=importdata('HopkinsFF_pointsTotals.csv');
+temp=importdata('HopkinsFF_pointsTotals201514.csv');
 data=temp.data;
 teams=temp.textdata(2:end,1);
 [~,weeks]=size(data);
@@ -27,12 +27,13 @@ for weeks=3:13
     temp2=zeros(length(teams),4);
     temp2(:,2:3)=PointsSTD;
     temp2(:,4)=TotalWins(:,1)/sum(TotalWins(:,1));
+    %temp2(:,4)=sum(TotalWins(:,(end-2):end),2)./(91*3);
     temp2(:,1)=[4,5,9,11,8,1,8,6,6,4,5,8,7,9]; %final wins
-    temp2(:,1)=[13,9,1,7,2,14,6,11,3,10,12,5,8,4]; %final ranks
-    temp2(:,1)=[13,10,2,1,4,14,6,9,8,12,11,5,7,3]; %final season ranks
+    %temp2(:,1)=[13,9,1,7,2,14,6,11,3,10,12,5,8,4]; %final ranks
+    %temp2(:,1)=[13,10,2,1,4,14,6,9,8,12,11,5,7,3]; %final season ranks
     temp(1,:)={'Team','FinalRank','Total Points','STD','Total Win Loss'};
     temp(2:end,1)=teams;
     temp(2:end,2:end)=num2cell(temp2);
-    clear PointsSTD; clear TotalWins; clear temp2;
+    clear PointsSTD; %clear TotalWins; clear temp2;
     fin=[fin;temp(2:end,:)];
 end
