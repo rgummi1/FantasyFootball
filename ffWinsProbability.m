@@ -1,0 +1,62 @@
+%ADD-ON to ffPowerRanks
+%Calculates probability of a team having a certain number of win given
+%randomized schedule
+% clc;
+% data=Points.data(:,1:end-1);
+% [t,weeks]=size(data);
+% teams=Points.textdata(2:end,1);
+
+winperms=zeros(1,weeks);
+for i=0:(2^(weeks)-1)
+    temp=de2bi(i);
+    winperms(i+1,1:length(temp))=de2bi(temp);
+end
+loseperms=ones(2^(weeks),weeks)-winperms;
+
+
+winprob=zeros(t,weeks+1);
+for team=1:t
+    for wins=0:weeks
+        weekwinprob=zeros(1,weeks);
+        for i=1:weeks
+            weekwinprob(i)=sum(data(:,i)<data(team,i))/(t-1);
+        end
+            weekloseprob=ones(1,weeks)-weekwinprob;
+        ProbWinmore=0;
+    %     ProbLosemore=0;
+        for i=1:2^(weeks)
+            if sum(winperms(i,:))==wins
+                ProbWinmore=ProbWinmore+prod((winperms(i,:).*(weekwinprob))+(loseperms(i,:).*(weekloseprob)));
+            end
+        end
+    %     for i=1:2^(weeks)
+    %         if sum(winperms(i,:))<=wins
+    %             ProbLosemore=ProbLosemore+prod((winperms(i,:).*(winprob))+(loseperms(i,:).*(loseprob)));
+    %         end
+    %     end
+        winprob(team,wins+1)=ProbWinmore;
+    end
+end
+luckindex=zeros(t,weeks+1); %make matrix of luckindex. where for each win, it has a score of (prob winning more-prob winning less/prob having that many wins)
+for team=1:t
+    for wins=0:weeks
+        luckindex(team,wins+1)=100*(sum(winprob(team,wins+1:end))-sum(winprob(team,1:wins+1)))/(winprob(team,wins+1)+1e-99);
+    end
+end
+
+probmatrix=cell(length(teams)+1,weeks+2);
+probmatrix(2:end,1)=teams;
+probmatrix(1,2:end)=num2cell(0:weeks);
+probmatrix(1,1)={'Wins->'};
+probmatrix(2:end,2:end)=num2cell(winprob);
+% luckmatrix=probmatrix;
+% luckmatrix(2:end,2:end)=num2cell(luckindex);
+realwins=Points.data(:,end);
+luck=zeros(t,1);
+for i=1:t
+    luck(i)=luckindex(i,realwins(i)+1);
+end
+
+% clear ProbWinmore; clear ProbLosemore; clear winprob;clear luckindex; clear realwins;
+% clear winperms;clear loseperms;clear weekwinprob;clear weekloseprob;clear wins; 
+% clear team; clear i; clear t; clear teams; clear weeks; clear temp; clear data;
