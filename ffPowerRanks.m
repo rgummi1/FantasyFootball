@@ -2,11 +2,11 @@ clear all; close all; clc
 
 %%
 %START INPUTS
-week=4;
+week=5;
 %END INPUTS
 %%
-fopen1=strcat('Points2016weeks',int2str(week),'maxpointsFalse.csv');
-fopen2=strcat('Points2016weeks',int2str(week),'maxpointsTrue.csv');
+fopen1=strcat('Outputs\Points2016weeks',int2str(week),'maxpointsFalse.csv');
+fopen2=strcat('Outputs\Points2016weeks',int2str(week),'maxpointsTrue.csv');
 Points=importdata(fopen1);
 data=Points.data(:,1:end-1);
 [t,weeks]=size(data);
@@ -58,16 +58,16 @@ temp2=temp2(b,:);
 temp2(:,1)=1:length(teams);
 teams=teams(b);
 if sum(percentmax)>0
-    ranks(1,:)={'Team','Rank','Weighted Score(Avg+3WkAvg-Std+300*%Wins)','Points per Game','STD','Avereage Points in last 3 weeks','Percent of Total Wins(if you played everyone every week)','Expected Wins(not used in score)(based on W-L if you played everyone every week)','True Wins','Luck Index(not used in score)(Higher the POSITIVE number-the more UNLUCKY you''ve been. The lower the NEGATIVE number-the LUCKier you''ve been','Managerial efficiency(not used in score)(How many points you scored out of your max. 100% you coudln''t have score more by starting anyone on your bench.)'};
+    ranks(1,:)={'Team','Rank','Weighted Score(Avg+3WkAvg-Std+300*%Wins)','Points per Game','STD','Avereage Points in last 3 weeks','Percent of Total Wins(if you played everyone every week)','Expected Wins(not used in score)(based on W-L if you played everyone every week)','True Wins','Luck Index*(not used in score)(Higher the POSITIVE number-the more UNLUCKY you''ve been. The lower the NEGATIVE number-the LUCKier you''ve been','Managerial efficiency(not used in score)(How many points you scored out of your max. 100% you coudln''t have score more by starting anyone on your bench.)'};
 else
-    ranks(1,:)={'Team','Rank','Weighted Score(Avg+3WkAvg-Std+300*%Wins)','Points per Game','STD','Avereage Points in last 3 weeks','Percent of Total Wins(if you played everyone every week)','Expected Wins(not used in score)(based on W-L if you played everyone every week)','True Wins','Luck Index(not used in score)(Higher the POSITIVE number-the more UNLUCKY you''ve been. The lower the NEGATIVE number-the LUCKier you''ve been','N/A'};
+    ranks(1,:)={'Team','Rank','Weighted Score(Avg+3WkAvg-Std+300*%Wins)','Points per Game','STD','Avereage Points in last 3 weeks','Percent of Total Wins(if you played everyone every week)','Expected Wins(not used in score)(based on W-L if you played everyone every week)','True Wins','Luck Index*(not used in score)(Higher the POSITIVE number-the more UNLUCKY you''ve been. The lower the NEGATIVE number-the LUCKier you''ve been','N/A'};
 end
 ranks(2:end,1)=teams;
 ranks(2:end,2:end)=num2cell(temp2);
 clear PointsSTD; clear TotalWins; clear temp2;
 clear data; clear percentmax; clear MaxPointsdata;
 
-fid=fopen(strcat('Ranks-Week',int2str(weeks),'.csv'),'w');
+fid=fopen(strcat('Outputs\Ranks-Week',int2str(weeks),'.csv'),'w');
 fprintf(fid,'%s,',ranks{1,1:end-1});
 fprintf(fid,'%s\n',ranks{1,end});
 for i=1:length(teams)
@@ -81,7 +81,7 @@ fprintf(fid,'%s\n','');
 fprintf(fid,'%s\n','');
 fprintf(fid,'%s\n','');
 fprintf(fid,'%s\n','');
-temp={'I found this interesting. This is what I used for the luck index. It''s a chart of how likely you are to have a certain number of wins or more given a random schedule','e.g. Sherwin would always have at least 1 win because he was the highest scorer week 1. So no matter what schedule we choose'' Sherwin gets at least one win. Each column is every teams probability of having at least the number of wins of that column if we replayed the season with a randomzied schedule.'};
+temp={'I found this interesting. This is what I used for the luck index. It''s a chart of how likely you are to have a certain number of wins or more given a random schedule','e.g. Sherwin would always have at least 1 win because he was the highest scorer week 1. So no matter what schedule we choose'' Sherwin gets at least one win. Each column is every teams probability of having at least the number of wins of that column if we replayed the season with a randomzied schedule.','*This might overestimate the good teams unluckiness and bad teams luckiness. But my computer isn''t good enough for more acuracy and idk efficient coding.'};
 fprintf(fid,'%s\n',temp{1:end});
 probmatrix2=probmatrix;
 probmatrix2(2:end,1)=teams;
@@ -93,7 +93,7 @@ for i=1:t
 end
 for i=1:t+1
     fprintf(fid,'%s,',probmatrix2{i,1});
-    for j=3:weeks+1
+    for j=2:weeks+1
        fprintf(fid,'%2.2f,',probmatrix2{i,j});
     end
     fprintf(fid,'%2.2f\n',probmatrix2{i,end});

@@ -1,0 +1,37 @@
+Team,Rank,Weighted Score(Avg+3WkAvg-Std+300*%Wins),Points per Game,STD,Avereage Points in last 3 weeks,Percent of Total Wins(if you played everyone every week),Expected Wins(not used in score)(based on W-L if you played everyone every week),True Wins,Luck Index*(not used in score)(Higher the POSITIVE number-the more UNLUCKY you've been. The lower the NEGATIVE number-the LUCKier you've been,Managerial efficiency(not used in score)(How many points you scored out of your max. 100% you coudln't have score more by starting anyone on your bench.)
+>Taniquetil Eagles, 1, 274.0, 123.5, 17.2, 121.7, 0.143, 4.3, 3, 1629, 0.889
+Fae Cthae, 2, 246.6, 114.3, 14.3, 104.8, 0.134, 4.0, 2, 2269, 0.916
+Last Manning Standin, 3, 243.2, 111.2, 17.3, 112.1, 0.119, 3.6, 3, 127, 0.887
+Gotta Catch Jamaal!, 4, 233.4, 107.0, 10.1, 105.8, 0.100, 3.0, 3,  4, 0.849
+. Nuke, 5, 230.8, 113.5, 28.7, 110.9, 0.106, 3.2, 2, 414, 0.912
+>Team  Suckerpunch, 6, 216.5, 99.3, 11.0, 103.8, 0.082, 2.5, 2, 90, 0.869
+Flacco's  Favorite, 7, 204.2, 102.9, 35.5, 114.2, 0.073, 2.2, 3, -214, 0.871
+G - Lit, 8, 185.1, 89.5, 15.4, 96.5, 0.055, 1.6, 2, -72, 0.839
+WINTER IS NEVER COMING, 9, 178.2, 91.9, 15.8, 86.3, 0.058, 1.7, 1, 146, 0.840
+The Life of Julio, 10, 170.6, 93.8, 28.3, 87.2, 0.067, 2.0, 1, 263, 0.871
+>Fortune Favors The Bold, 11, 149.6, 84.8, 20.5, 77.4, 0.040, 1.2, 1, 32, 0.717
+>Do You Even Lift?, 12, 147.4, 78.1, 9.2, 73.9, 0.024, 0.7, 1, -72, 0.802
+
+
+
+
+
+
+
+
+I found this interesting. This is what I used for the luck index. It's a chart of how likely you are to have a certain number of wins or more given a random schedule
+e.g. Sherwin would always have at least 1 win because he was the highest scorer week 1. So no matter what schedule we choose' Sherwin gets at least one win. Each column is every teams probability of having at least the number of wins of that column if we replayed the season with a randomzied schedule.
+*This might overestimate the good teams unluckiness and bad teams luckiness. But my computer isn't good enough for more acuracy and idk efficient coding.
+Wins->,0.00,1.00,2.00,3.00,4.00,5.00
+>Taniquetil Eagles,1.00,1.00,1.00,1.00,0.94,0.33
+Fae Cthae,1.00,1.00,1.00,0.96,0.74,0.31
+Last Manning Standin,1.00,1.00,0.98,0.88,0.54,0.14
+Gotta Catch Jamaal!,1.00,0.99,0.93,0.69,0.32,0.06
+. Nuke,1.00,1.00,0.97,0.79,0.38,0.05
+>Team  Suckerpunch,1.00,0.98,0.84,0.48,0.14,0.01
+Flacco's  Favorite,1.00,1.00,0.79,0.34,0.05,0.00
+G - Lit,1.00,0.92,0.56,0.15,0.02,0.00
+WINTER IS NEVER COMING,1.00,0.90,0.57,0.22,0.04,0.00
+The Life of Julio,1.00,0.98,0.71,0.27,0.03,0.00
+>Fortune Favors The Bold,1.00,0.82,0.34,0.03,0.00,0.00
+>Do You Even Lift?,1.00,0.56,0.15,0.02,0.00,0.00

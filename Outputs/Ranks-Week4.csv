@@ -1,4 +1,4 @@
-Team,Rank,Weighted Score(Avg+3WkAvg-Std+300*%Wins),Points per Game,STD,Avereage Points in last 3 weeks,Percent of Total Wins(if you played everyone every week),Expected Wins(not used in score)(based on W-L if you played everyone every week),True Wins,Luck Index(not used in score)(Higher the POSITIVE number-the more UNLUCKY you've been. The lower the NEGATIVE number-the LUCKier you've been,Managerial efficiency(not used in score)(How many points you scored out of your max. 100% you coudln't have score more by starting anyone on your bench.)
+Team,Rank,Weighted Score(Avg+3WkAvg-Std+300*%Wins),Points per Game,STD,Avereage Points in last 3 weeks,Percent of Total Wins(if you played everyone every week),Expected Wins(not used in score)(based on W-L if you played everyone every week),True Wins,Luck Index*(not used in score)(Higher the POSITIVE number-the more UNLUCKY you've been. The lower the NEGATIVE number-the LUCKier you've been,Managerial efficiency(not used in score)(How many points you scored out of your max. 100% you coudln't have score more by starting anyone on your bench.)
 >Taniquetil Eagles, 1, 267.7, 123.6, 19.9, 119.5, 0.137, 3.3, 3, 45, 0.917
 Fae Cthae, 2, 251.5, 115.6, 16.2, 109.2, 0.137, 3.3, 2, 655, 0.928
 DeandreSSSS Hopkin, 3, 238.0, 117.0, 31.9, 115.9, 0.110, 2.6, 2, 168, 0.899
@@ -21,6 +21,7 @@ WINTER IS NEVER COMING, 10, 178.8, 93.9, 17.5, 86.9, 0.057, 1.4, 1, 63, 0.811
 
 I found this interesting. This is what I used for the luck index. It's a chart of how likely you are to have a certain number of wins or more given a random schedule
 e.g. Sherwin would always have at least 1 win because he was the highest scorer week 1. So no matter what schedule we choose' Sherwin gets at least one win. Each column is every teams probability of having at least the number of wins of that column if we replayed the season with a randomzied schedule.
+*This might overestimate the good teams unluckiness and bad teams luckiness. But my computer isn't good enough for more acuracy and idk efficient coding.
 Wins->,1.00,2.00,3.00,4.00
 >Taniquetil Eagles,1.00,1.00,0.94,0.33
 Fae Cthae,1.00,0.99,0.86,0.42
