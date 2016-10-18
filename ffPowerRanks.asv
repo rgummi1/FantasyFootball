@@ -1,9 +1,8 @@
-%MAIN. THIS IS MAIN
 clear all; close all; clc
 
 %%
 %START INPUTS
-week=6;
+week=5;
 %END INPUTS
 %%
 fopen1=strcat('Outputs\Points2016weeks',int2str(week),'maxpointsFalse.csv');
@@ -81,19 +80,16 @@ estprobmatrix(1,2:end)=num2cell(0:weeks);
 estprobmatrix(1,1)={'Wins->'};
 for i=1:t
     temp=ffSimWinDist(i,data);
-    %actual luck matrix
-    temp2=Points.data(i,end);
-    luck(i)=100*(sum(temp(temp2+2:end))-sum(temp(1:temp2)))/temp(temp2+1);
     estprobmatrix(i+1,2:end)=num2cell(temp);
 end
-ranks(2:end,10)=num2cell(luck(b));
+
 cdfprobmatrix=estprobmatrix;%exact matrix of all possible schedules(includes schedules where same team is played multiple times
 temp=cdfprobmatrix(2:end,:);
-cdfprobmatrix(2:end,1)=teams2;
 temp=temp(b,:);
 for i=1:weeks+1
-    cdfprobmatrix(2:end,i+1)=num2cell(sum(cell2mat(temp(:,(i+1):end)),2));
+    cdfprobmatrix(2:end,i+1)=sum(cell2mat(temp(2:end,(i+1):end));
 end
+
 
 clear PointsSTD; clear TotalWins; clear temp2; clear teams2;
 clear percentmax; clear MaxPointsdata;
@@ -121,7 +117,7 @@ fprintf(fid,'%s\n',temp{1:end});
 for i=1:t+1
     fprintf(fid,'%s,',cdfprobmatrix{i,1});
     for j=2:weeks+1
-       fprintf(fid,'%2.3f,',cdfprobmatrix{i,j});
+       fprintf(fid,'%2.2f,',cdfprobmatrix{i,j});
     end
     fprintf(fid,'%2.2f\n',cdfprobmatrix{i,end});
 end

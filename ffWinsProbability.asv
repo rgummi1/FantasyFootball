@@ -1,3 +1,4 @@
+function [ windist ] = ffExtWinDist( team, data )
 %ADD-ON to ffPowerRanks
 %Calculates probability of a team having a certain number of win given
 %randomized schedule
@@ -49,9 +50,9 @@ probmatrix(2:end,1)=teams;
 probmatrix(1,2:end)=num2cell(0:weeks);
 probmatrix(1,1)={'Wins->'};
 probmatrix(2:end,2:end)=num2cell(winprob);
+% luckmatrix=probmatrix;
+% luckmatrix(2:end,2:end)=num2cell(luckindex);
 realwins=Points.data(:,end);
-%realwins=[4,1,2,2,2,3,2,4,2,4,3,1];
-
 luck=zeros(t,1);
 for i=1:t
     luck(i)=luckindex(i,realwins(i)+1);
