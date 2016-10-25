@@ -3,7 +3,7 @@ clear all; close all; clc
 
 %%
 %START INPUTS
-week=6;
+week=7;
 %END INPUTS
 %%
 fopen1=strcat('Outputs\Points2016weeks',int2str(week),'maxpointsFalse.csv');
@@ -128,7 +128,22 @@ end
 fclose(fid);
 
 
-clear b; clear ans; clear i; clear j; clear fid; clear weeks; clear teams;
+clear ans; clear i; clear j; clear fid; clear weeks; clear teams;
 clear ProbWinmore; clear ProbLosemore; clear winprob;clear luckindex; clear realwins;
 clear winperms;clear loseperms;clear weekwinprob;clear weekloseprob;clear wins; 
 clear team; clear t; clear temp; clear luck;
+
+a=cell2mat(cdfprobmatrix(2:end,2:end));
+%a=a(b,:);
+plot(a','linewidth',2)
+legend(cdfprobmatrix(2:end,1))
+axis([0 week+1 0 1]);
+xlabel('wins+1'); ylabel('probability');
+a=cell2mat(ranks(2:end,9));
+for i=1:length(a)
+a2(i)=(cdfprobmatrix(i+1,a(i)+2));
+end
+a2=cell2mat(a2);
+hold all
+scatter(a,a2);
+clear b; clear a;
