@@ -3,7 +3,7 @@ clear all; close all; clc
 
 %%
 %START INPUTS
-week=9;
+week=10;
 %END INPUTS
 %%
 fopen1=strcat('Outputs\Points2016weeks',int2str(week),'maxpointsFalse.csv');
@@ -44,7 +44,13 @@ temp2=zeros(length(teams),9);
 temp2(:,3:4)=PointsSTD; %average points, std
 %temp2(:,3)=mean(data,2)./sum(data,2);
 %temp2(:,4)=std(data,0,2)/mean(data,2);
-temp2(:,5)=(sum(data(:,(end-2):end),2))/3; %average points in last 3 weeks
+%temp2(:,5)=(sum(data(:,(end-2):end),2))/3; %average points in last 3 weeks
+j=0;
+for i=1:week
+   temp2(:,5)=data(:,end+1-i)/i+temp2(:,5);
+   j=j+1/i;
+end
+temp2(:,5)=temp2(:,5)./j;
 temp2(:,6)=TotalWins(:,1)/sum(TotalWins(:,1));
 temp2(:,7)=temp2(:,6)*(length(teams)/2)*weeks;
 temp2(:,8)=Points.data(:,end);
